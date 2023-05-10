@@ -1,0 +1,28 @@
+.imgTable {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.totalButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.tableHead {
+  background-color: black;
+  color: white;
+}
+
+td input {
+  width: 50px;
+  height: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 10px;
+}

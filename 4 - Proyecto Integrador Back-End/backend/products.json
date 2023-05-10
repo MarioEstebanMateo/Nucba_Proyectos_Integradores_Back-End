@@ -1,0 +1,89 @@
+[{
+  "title": "Z425 Intel Core i3 10105-8Gb-480-KIT",
+  "description": "• Motherboard 1200 11°Gen - Gigabyte B560M DS3H V2 • Procesador Intel Core i3 10105 4.4 Ghz Comet Lake 1200 • Memoria Ram DDR4 - 8Gb 2666 Mhz Hikvision •",
+  "price": 252000,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525768/1_ghnaae.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "MX517 Amd Ryzen 5 5600G-8Gb",
+  "description": "• Motherboard AM4 - Gigabyte GA-A520M-H • Procesador Amd Ryzen 5 5600G 4.4 Ghz - AM4 • Memoria Ram DDR4 - 8Gb 2666 Mhz Hikvision •",
+  "price": 280000,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525768/2_v1njqd.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "GP8000 Intel Core i3 12100F-8Gb-RTX1660",
+  "description": "• Motherboard 1700 12°Gen - Gigabyte GA-H610M-H DDR4 • Procesador Intel Core i3 12100F 4.3 Ghz Alder Lake 1700 Sin Gpu • Memoria Ram DDR4 - 8Gb 3200 Mhz Crucial Value •",
+  "price": 620000,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525768/3_miil2s.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "Camara Web Redragon GW600 Fobos 720p",
+  "description": "• Cámara Web Redragon GW600 Fobos 720p •",
+  "price": 7349,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525769/4_ig6sq0.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "Notebook Hyundai Celeron N4020 4Gb Ssd 128Gb 14 pulgadas Win10",
+  "description": "• Notebook Hyundai Celeron N4020 4Gb Ssd 128Gb 14 pulgadas Win10 •",
+  "price": 397000,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525768/5_ofprqt.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "Procesador Intel Pentium G7400 3.8 Ghz Alder Lake 12va 1700",
+  "description": "• Procesador Intel Pentium G7400 3.8 Ghz Alder Lake 12va 1700 •",
+  "price": 22899,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525768/6_cvzx5l.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "Teclado Gamer HyperX Alloy Origins 60 Aqua Inglés",
+  "description": "• Teclado Gamer HyperX Alloy Origins 60 Aqua Inglés •",
+  "price": 18139,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525768/7_amj8iw.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+},{
+  "title": "Parlante Logitech Z407 Graphite Bluetooth",
+  "description": "• Parlante Logitech Z407 Graphite Bluetooth",
+  "price": 29499,
+  "imageUrl": "https://res.cloudinary.com/dwxoq8n2m/image/upload/v1681525769/8_vq5rlq.jpg",
+  "createdAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-30T00:00:00.000Z"
+  }
+}]

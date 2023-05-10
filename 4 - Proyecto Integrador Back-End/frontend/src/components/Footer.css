@@ -1,0 +1,13 @@
+.footer {
+    background-color: #b8cdf5;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footerP {
+    font-family: 'Courgette', cursive;
+    font-size: 1.0rem;
+    font-weight: 900;
+    color: #06223f;
+    text-align: center;
+}
