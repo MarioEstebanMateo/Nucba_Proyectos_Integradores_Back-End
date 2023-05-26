@@ -26,3 +26,7 @@ td input {
   text-align: center;
   margin-left: 10px;
 }
+
+#cart-page-span {
+  display: none;
+}

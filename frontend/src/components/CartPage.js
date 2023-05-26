@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import swal2 from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -10,13 +10,34 @@ const CartPage = () => {
 
   const [cart, setCart] = React.useState([]);
 
+  const userIsLogged = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const getCart = async () => {
     try {
       const cart = await axios.get("http://localhost:8000/api/carts");
       setCart(cart.data);
+      if (userIsLogged) {
+        document.getElementById("cart-page-span").style.display = "block";
+      }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const deleteUserFromLocalStorage = () => {
+    localStorage.removeItem("user");
+  };
+
+  const cerrarSesion = () => {
+    deleteUserFromLocalStorage();
+    navigate("/");
   };
 
   React.useEffect(() => {
@@ -100,20 +121,34 @@ const CartPage = () => {
         confirmButtonText: "Ok",
       });
     } else {
-      swal2
-        .fire({
-          title: "Compra Finalizada!",
-          text: `Su compra se realizo con exito! Muchas gracias por confiar en nosotros! El Total a pagar es: $${cart.reduce(
-            (acc, item) => acc + item.price * item.quantity,
-            0
-          )}`,
-          icon: "success",
-          confirmButtonText: "Ok",
-        })
-        .then(() => {
-          deleteAllFromCart();
-          navigate("/");
-        });
+      //debe estar logueado para poder comprar
+      if (!userIsLogged()) {
+        swal2
+          .fire({
+            title: "Debe estar logueado para poder comprar",
+            icon: "warning",
+            confirmButtonText: "Ok",
+          })
+          .then(() => {
+            navigate("/login");
+          });
+      } else {
+        swal2
+          .fire({
+            title: "Compra Finalizada!",
+            text: `Su compra se realizo con exito! Muchas gracias por confiar en nosotros! El Total a pagar es: $${cart.reduce(
+              (acc, item) => acc + item.price * item.quantity,
+              0
+            )}`,
+            icon: "success",
+            confirmButtonText: "Ok",
+          })
+          .then(() => {
+            deleteUserFromLocalStorage();
+            deleteAllFromCart();
+            navigate("/");
+          });
+      }
     }
   };
 
@@ -153,6 +188,11 @@ const CartPage = () => {
   return (
     <div className="cart-page">
       <h1 className="mt-2">Carrito</h1>
+      <span id="cart-page-span">
+        <button className="btn btn-outline-danger" onClick={cerrarSesion}>
+          Cerrar Sesion
+        </button>
+      </span>
       <table className="table table-hover table-bordered mt-3">
         <thead className="tableHead">
           <tr>

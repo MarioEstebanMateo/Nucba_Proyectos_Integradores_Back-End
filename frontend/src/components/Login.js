@@ -48,7 +48,9 @@ const Login = () => {
                 confirmButtonText: "Aceptar",
               })
               .then(() => {
-                navigate("/");
+                //LocalStorage para guardar el usuario logueado
+                localStorage.setItem("user", JSON.stringify(user[0]));
+                navigate("/cart");
               });
             //limpiar el formulario
             document.getElementById("emailLogin").value = "";
@@ -94,7 +96,7 @@ const Login = () => {
                   className="form-control mt-2"
                   id="emailLogin"
                   aria-describedby="emailHelp"
-                  placeholder="Infrese su email"
+                  placeholder="Ingrese su email"
                 />
               </div>
               <div className="form-group">
