@@ -10,6 +10,20 @@ const CartPage = () => {
 
   const [cart, setCart] = React.useState([]);
 
+  const getCart = async () => {
+    try {
+      const cart = await axios.get(
+        "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/carts"
+      );
+      setCart(cart.data);
+      if (userIsLogged()) {
+        document.getElementById("cart-page-span").style.display = "block";
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const userIsLogged = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
@@ -19,25 +33,28 @@ const CartPage = () => {
     }
   };
 
-  const getCart = async () => {
-    try {
-      const cart = await axios.get("http://localhost:8000/api/carts");
-      setCart(cart.data);
-      if (userIsLogged) {
-        document.getElementById("cart-page-span").style.display = "block";
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const deleteUserFromLocalStorage = () => {
     localStorage.removeItem("user");
   };
 
   const cerrarSesion = () => {
-    deleteUserFromLocalStorage();
-    navigate("/");
+    swal2
+      .fire({
+        title: "Esta seguro?",
+        text: "Se cerrara la sesion actual y se perderan los productos del carrito",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, cerrar sesion",
+        cancelButtonText: "No, cancelar",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          deleteUserFromLocalStorage();
+          deleteAllFromCart();
+          document.getElementById("cart-page-span").style.display = "none";
+          navigate("/");
+        }
+      });
   };
 
   React.useEffect(() => {
@@ -57,7 +74,9 @@ const CartPage = () => {
         })
         .then(async (result) => {
           if (result.isConfirmed) {
-            await axios.delete(`http://localhost:8000/api/carts/${id}`);
+            await axios.delete(
+              `https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/carts/${id}`
+            );
             swal2.fire(
               "Eliminado!",
               "El producto ha sido eliminado.",
@@ -77,7 +96,9 @@ const CartPage = () => {
     const cartLength = cart.length;
     try {
       for (let i = 0; i < cartLength; i++) {
-        await axios.delete(`http://localhost:8000/api/carts/${cart[i]._id}`);
+        await axios.delete(
+          `https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/carts/${cart[i]._id}`
+        );
       }
       getCart();
     } catch (error) {
@@ -103,9 +124,12 @@ const CartPage = () => {
       return;
     }
     try {
-      await axios.put(`http://localhost:8000/api/carts/${id}`, {
-        quantity: quantity,
-      });
+      await axios.put(
+        `https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/carts/${id}`,
+        {
+          quantity: quantity,
+        }
+      );
       getCart();
     } catch (error) {
       console.log(error);
@@ -144,7 +168,6 @@ const CartPage = () => {
             confirmButtonText: "Ok",
           })
           .then(() => {
-            deleteUserFromLocalStorage();
             deleteAllFromCart();
             navigate("/");
           });

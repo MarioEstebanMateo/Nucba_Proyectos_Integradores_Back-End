@@ -33,45 +33,49 @@ const Login = () => {
         confirmButtonText: "Aceptar",
       });
     } else {
-      await axios.get("http://localhost:8000/api/users").then((response) => {
-        console.log(response.data);
-        const users = response.data;
-        const user = users.filter((user) => user.email === email);
+      await axios
+        .get(
+          "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/users"
+        )
+        .then((response) => {
+          console.log(response.data);
+          const users = response.data;
+          const user = users.filter((user) => user.email === email);
 
-        if (user.length > 0) {
-          if (user[0].password === password) {
-            swal2
-              .fire({
-                title: "Bienvenido",
-                text: "Usuario logueado correctamente",
-                icon: "success",
+          if (user.length > 0) {
+            if (user[0].password === password) {
+              swal2
+                .fire({
+                  title: "Bienvenido",
+                  text: "Usuario logueado correctamente",
+                  icon: "success",
+                  confirmButtonText: "Aceptar",
+                })
+                .then(() => {
+                  //LocalStorage para guardar el usuario logueado
+                  localStorage.setItem("user", JSON.stringify(user[0]));
+                  navigate("/cart");
+                });
+              //limpiar el formulario
+              document.getElementById("emailLogin").value = "";
+              document.getElementById("passwordLogin").value = "";
+            } else {
+              swal2.fire({
+                title: "Error",
+                text: "Contraseña incorrecta",
+                icon: "error",
                 confirmButtonText: "Aceptar",
-              })
-              .then(() => {
-                //LocalStorage para guardar el usuario logueado
-                localStorage.setItem("user", JSON.stringify(user[0]));
-                navigate("/cart");
               });
-            //limpiar el formulario
-            document.getElementById("emailLogin").value = "";
-            document.getElementById("passwordLogin").value = "";
+            }
           } else {
             swal2.fire({
               title: "Error",
-              text: "Contraseña incorrecta",
+              text: "El usuario no existe",
               icon: "error",
               confirmButtonText: "Aceptar",
             });
           }
-        } else {
-          swal2.fire({
-            title: "Error",
-            text: "El usuario no existe",
-            icon: "error",
-            confirmButtonText: "Aceptar",
-          });
-        }
-      });
+        });
     }
   };
 

@@ -13,7 +13,9 @@ const Home = () => {
 
   const getProducts = async () => {
     try {
-      const products = await axios.get("http://localhost:8000/api/products");
+      const products = await axios.get(
+        "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/products"
+      );
       setProducts(products.data);
     } catch (error) {
       console.log(error);

@@ -16,7 +16,7 @@ const ProductPage = () => {
     const getProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/products/${params.id}`
+          `https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/products/${params.id}`
         );
         setProduct(response.data);
         console.log(response.data);
@@ -33,7 +33,9 @@ const ProductPage = () => {
 
   const addToCart = async () => {
     try {
-      const cart = await axios.get("http://localhost:8000/api/carts");
+      const cart = await axios.get(
+        "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/carts"
+      );
       const productInCart = cart.data.find(
         (item) => item.title === product.title
       );
@@ -68,12 +70,15 @@ const ProductPage = () => {
           });
           return;
         }
-        await axios.post("http://localhost:8000/api/carts", {
-          price: product.price,
-          imageUrl: product.imageUrl,
-          title: product.title,
-          quantity: quantity,
-        });
+        await axios.post(
+          "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/carts",
+          {
+            price: product.price,
+            imageUrl: product.imageUrl,
+            title: product.title,
+            quantity: quantity,
+          }
+        );
         const { isConfirmed } = await swal2.fire({
           icon: "success",
           title: "Producto agregado al carrito!",

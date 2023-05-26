@@ -47,49 +47,56 @@ const Register = () => {
     }
     //validar que el email no este registrado
     else {
-      await axios.get("http://localhost:8000/api/users").then((response) => {
-        console.log(response.data);
-        const users = response.data;
-        const user = users.filter((user) => user.email === email);
+      await axios
+        .get(
+          "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/users"
+        )
+        .then((response) => {
+          console.log(response.data);
+          const users = response.data;
+          const user = users.filter((user) => user.email === email);
 
-        if (user.length > 0) {
-          swal2
-            .fire({
-              title: "Error",
-              text: "El email ya esta registrado",
-              icon: "error",
-              confirmButtonText: "Aceptar",
-            })
-            .then(() => {
-              document.getElementById("emailLogin").value = "";
-              document.getElementById("passwordLogin").value = "";
-              document.getElementById("confirmPasswordLogin").value = "";
-              navigate("/login");
-            });
-        } else {
-          axios
-            .post("http://localhost:8000/api/users", {
-              email: email,
-              password: password,
-            })
-            .then((response) => {
-              console.log(response);
-              swal2
-                .fire({
-                  title: "Usuario registrado",
-                  text: "Usuario registrado correctamente",
-                  icon: "success",
-                  confirmButtonText: "Aceptar",
-                })
-                .then(() => {
-                  navigate("/login");
-                });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
-      });
+          if (user.length > 0) {
+            swal2
+              .fire({
+                title: "Error",
+                text: "El email ya esta registrado",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+              })
+              .then(() => {
+                document.getElementById("emailLogin").value = "";
+                document.getElementById("passwordLogin").value = "";
+                document.getElementById("confirmPasswordLogin").value = "";
+                navigate("/login");
+              });
+          } else {
+            axios
+              .post(
+                "https://nucba-proyectos-integradores-back-end-database-mongodb.vercel.app/api/users",
+                {
+                  email: email,
+                  password: password,
+                }
+              )
+              .then((response) => {
+                console.log(response);
+                swal2
+                  .fire({
+                    title: "Usuario registrado",
+                    text: "Usuario registrado correctamente",
+                    icon: "success",
+                    confirmButtonText: "Aceptar",
+                  })
+                  .then(() => {
+                    navigate("/login");
+                  });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        });
     }
   };
 
