@@ -100,7 +100,7 @@ const Register = () => {
           <div className="myform form ">
             <div className="logo mb-3">
               <div className="col-md-12 text-center">
-                <h1>Register</h1>
+                <h1>Registrarse</h1>
               </div>
             </div>
             <form action="" method="post" name="login">
@@ -114,7 +114,7 @@ const Register = () => {
                   className="form-control mt-2"
                   id="emailLogin"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="Ingrese su email"
                 />
               </div>
               <div className="form-group">
@@ -127,12 +127,12 @@ const Register = () => {
                   id="passwordLogin"
                   className="form-control mt-2"
                   aria-describedby="emailHelp"
-                  placeholder="Enter Password"
+                  placeholder="Ingrese su Password"
                 />
               </div>
               <div className="form-group">
                 <label className="mt-3" htmlFor="confirmPassword">
-                  Confirm Password
+                  Confirmar Password
                 </label>
                 <input
                   type="password"
@@ -140,7 +140,7 @@ const Register = () => {
                   id="confirmPasswordLogin"
                   className="form-control mt-2"
                   aria-describedby="emailHelp"
-                  placeholder="Confirm Password"
+                  placeholder="Repita su Password"
                 />
               </div>
               <div className="col-md-12 text-center ">
@@ -149,7 +149,7 @@ const Register = () => {
                   className=" btn btn-block mybtn btn-primary tx-tfm mt-3"
                   onClick={register}
                 >
-                  Register
+                  Registrarse
                 </button>
               </div>
               <div className="col-md-12 ">
@@ -160,7 +160,7 @@ const Register = () => {
               </div>
               <div className="form-group">
                 <p className="text-center">
-                  Have an account? <Link to="/login">Login here</Link>
+                  Ya tiene una cuenta? <Link to="/login">Iniciar sesión</Link>
                 </p>
               </div>
             </form>

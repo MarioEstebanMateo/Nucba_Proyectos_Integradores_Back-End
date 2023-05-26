@@ -152,7 +152,7 @@ const CartPage = () => {
 
   return (
     <div className="cart-page">
-      <h1 className="mt-2">Cart</h1>
+      <h1 className="mt-2">Carrito</h1>
       <table className="table table-hover table-bordered mt-3">
         <thead className="tableHead">
           <tr>

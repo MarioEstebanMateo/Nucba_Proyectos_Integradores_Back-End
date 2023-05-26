@@ -80,7 +80,7 @@ const Login = () => {
           <div className="myform form ">
             <div className="logo mb-3">
               <div className="col-md-12 text-center">
-                <h1>Login</h1>
+                <h1>Iniciar Sesión</h1>
               </div>
             </div>
             <form action="" method="post" name="login">
@@ -94,7 +94,7 @@ const Login = () => {
                   className="form-control mt-2"
                   id="emailLogin"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="Infrese su email"
                 />
               </div>
               <div className="form-group">
@@ -107,7 +107,7 @@ const Login = () => {
                   id="passwordLogin"
                   className="form-control mt-2"
                   aria-describedby="emailHelp"
-                  placeholder="Enter Password"
+                  placeholder="Ingrese su password"
                 />
               </div>
               <div className="col-md-12 text-center ">
@@ -116,7 +116,7 @@ const Login = () => {
                   className=" btn btn-block mybtn btn-primary tx-tfm mt-3"
                   onClick={login}
                 >
-                  Login
+                  Ingresar
                 </button>
               </div>
               <div className="col-md-12 ">
@@ -127,9 +127,9 @@ const Login = () => {
               </div>
               <div className="form-group">
                 <p className="text-center">
-                  Don't have account?{" "}
+                  No tiene una cuenta?{" "}
                   <Link to="/register" id="signup">
-                    Sign up here
+                    Registrarse aqui
                   </Link>
                 </p>
               </div>
