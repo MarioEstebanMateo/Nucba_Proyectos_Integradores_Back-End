@@ -10,12 +10,12 @@ h3 {
     font-weight: 400;
 }
 
-.card-container {
+.card_container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     margin: 10px;
-    gap: 5px;
 }
 
 .card {

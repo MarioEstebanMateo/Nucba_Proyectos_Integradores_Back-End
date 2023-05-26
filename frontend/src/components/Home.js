@@ -83,7 +83,7 @@ const Home = () => {
       </div>
 
       <h3>Nuestros Productos</h3>
-      <div className="card-container row">
+      <div className="card_container">
         {products.map((product, index) => (
           <div className="col" key={index}>
             <div className="card">
