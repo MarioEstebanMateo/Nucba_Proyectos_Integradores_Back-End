@@ -20,7 +20,7 @@ const getProductInCartById = async (req, res) => {
 
 const addProductToCart = async (req, res) => {
   const product = new carts({
-    productId: req.body.productId,
+    price: req.body.price,
     imageUrl: req.body.imageUrl,
     title: req.body.title,
     quantity: req.body.quantity,

@@ -8,26 +8,24 @@ import "./ProductPage.css";
 
 const ProductPage = () => {
   const [quantity, setQuantity] = React.useState(1);
+  const [product, setProduct] = React.useState([]);
   const params = useParams();
-  console.log(params);
   const navigate = useNavigate();
 
-  const [product, setProduct] = React.useState([]);
-
-  const getProduct = async () => {
-    try {
-      const product = await axios.get(
-        `http://localhost:8000/api/products/${params.id}`
-      );
-      setProduct(product.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   React.useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/api/products/${params.id}`
+        );
+        setProduct(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     getProduct();
-  }, []);
+  }, [params.id]);
 
   const handleChange = (e) => {
     setQuantity(e.target.value);
@@ -35,30 +33,60 @@ const ProductPage = () => {
 
   const addToCart = async () => {
     try {
-      await axios.post("http://localhost:8000/api/carts", {
-        productId: product._id,
-        imageUrl: product.imageUrl,
-        title: product.title,
-        price: product.price,
-        quantity: quantity,
-      });
-      //swal2 producto agregado al carrito o continuar comprando
-      swal2
-        .fire({
-          title: "Producto agregado al carrito",
-          text: "¿Desea continuar comprando?",
-          icon: "success",
-          showCancelButton: true,
-          confirmButtonText: "Si, continuar comprando",
-          cancelButtonText: "No, ir al carrito",
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
+      const cart = await axios.get("http://localhost:8000/api/carts");
+      const productInCart = cart.data.find(
+        (item) => item.title === product.title
+      );
+      if (productInCart) {
+        swal2
+          .fire({
+            icon: "error",
+            title: "Oops...",
+            text: "El producto ya esta en el carrito! Modifique la cantidad desde el carrito!",
+          })
+          .then(() => {
             navigate("/");
-          } else if (result.dismiss === swal2.DismissReason.cancel) {
-            navigate("/cart");
-          }
+          });
+      } else {
+        if (quantity < 1) {
+          swal2
+            .fire({
+              icon: "error",
+              title: "Oops...",
+              text: "La cantidad no puede ser menor a 1!",
+            })
+            .then(() => {
+              setQuantity(1);
+            });
+          return;
+        }
+        if (quantity > 50) {
+          swal2.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "La cantidad no puede ser mayor a 50!",
+          });
+          return;
+        }
+        await axios.post("http://localhost:8000/api/carts", {
+          price: product.price,
+          imageUrl: product.imageUrl,
+          title: product.title,
+          quantity: quantity,
         });
+        const { isConfirmed } = await swal2.fire({
+          icon: "success",
+          title: "Producto agregado al carrito!",
+          showCancelButton: true,
+          confirmButtonText: "Ir al carrito",
+          cancelButtonText: "Continuar comprando",
+        });
+        if (isConfirmed) {
+          navigate("/cart");
+        } else {
+          navigate("/");
+        }
+      }
     } catch (error) {
       console.log(error);
     }
